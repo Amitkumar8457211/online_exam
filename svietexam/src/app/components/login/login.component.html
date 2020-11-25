@@ -1,0 +1,50 @@
+<!-- Default form login -->
+<div class="front">
+    <br><br><br><br>
+  <div class="customcontainer text-center mt-5 mb-5 ">
+    <p class="h4 mb-4">Login</p>
+    <p class="text-danger">{{error}}</p>
+    <!-- Email -->
+    <mat-form-field class="inputsize" appearance="outline">
+      <mat-label>Enter your username</mat-label>
+      <input name="username" type="text" [(ngModel)]="username" matInput required [formControl]="name">
+      <mat-icon matSuffix>account_box</mat-icon>
+      <mat-error *ngIf="name.invalid">{{getErrorMessagegmail()}}</mat-error>
+    </mat-form-field>
+    <!-- Password -->
+    <mat-form-field class="inputsize" appearance="outline">
+      <mat-label>Enter your password</mat-label>
+      <input name="userpassword" [(ngModel)]="password" matInput [type]="hide ? 'password' : 'text'" required
+        [formControl]="pass">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="pass.invalid">{{getErrorMessagepassword()}}</mat-error>
+    </mat-form-field>
+
+    <!-- Sign in button -->
+    <div class=""><button type="button" [disabled]="name.invalid || pass.invalid" (click)="login()" mat-raised-button
+        color="primary">
+        <mat-icon>person</mat-icon> Login
+      </button></div>
+    <!-- Register -->
+  </div>
+</div>
+
+
+<!-- <div class="front">
+    <br><br><br><br>
+    <div class="customcontainer text-center mt-5 mb-5">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Username</label>
+        <input  name="username" type="text" class="form-control" [(ngModel)]="username" id="username" placeholder="Username" aria-describedby="emailHelp" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" [(ngModel)]="password" placeholder="password" required >
+    </div>
+
+    <button type="button" (click)="login()" class="btn btn-primary">Submit</button>
+    </div>
+</div> -->

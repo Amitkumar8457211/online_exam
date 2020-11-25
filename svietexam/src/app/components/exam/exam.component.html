@@ -1,0 +1,65 @@
+  <div *ngIf="message; else noexamfound">
+    <div class="container container-not-found text-center mt-5 mb-5 ">
+      <h1 style="font-size: 100px; margin: 50px;">😯</h1>
+      <h2>{{message}}</h2>
+    </div>
+    <div class="text-center">
+      <h1 class="custonh1"> <button class="btn btn-primary" (click)="goback();">Go Back</button></h1>
+    </div>
+  </div>
+
+  <ng-template #noexamfound>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-9 exambox">
+          <div class="examcontainer">
+            <div *ngFor="let Qustions of Qustion">
+              <div class="container-fluid leftmargin " style="overflow-x: auto;overflow-y:hidden;">
+                <label id="question{{Qustions.id}}">{{Qustions.question}}</label>
+                <mat-radio-group aria-labelledby="question{{Qustions.id}}" class="example-radio-group">
+                  <mat-radio-button type="radio" value=1 (change)="submitanswer(Qustions.id,$event)">
+                    {{Qustions.option1}}</mat-radio-button>
+                  <mat-radio-button type="radio" value=2 (change)="submitanswer(Qustions.id,$event)">
+                    {{Qustions.option2}}</mat-radio-button>
+                  <mat-radio-button type="radio" value=3 (change)="submitanswer(Qustions.id,$event)">
+                    {{Qustions.option3}}</mat-radio-button>
+                  <mat-radio-button type="radio" value=4 (change)="submitanswer(Qustions.id,$event)">
+                    {{Qustions.option4}}</mat-radio-button>
+                </mat-radio-group>
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 text-center">
+          <br>
+          <h2><u>Remaining time</u></h2>
+          <h1>{{timmerhour}}:{{timmerminute}}:{{timmersecond}}</h1>
+          <hr>
+          <div class="row mx-auto">
+            <div class="iconblue "></div>
+            <h3 class="pt-1">Not Answer</h3>
+          </div>
+          <div class="row mx-auto">
+            <div class="icongreen "></div>
+            <h3 class="pt-1">Answer</h3>
+          </div>
+          <hr>
+          <div class="container px-3 pb-3">
+            <div class="d-flex flex-wrap">
+              <div *ngFor="let Qustions of Qustion; let i = index" [attr.data-index]="i">
+                <div [ngClass] = "[ attempt.indexOf(Qustions.id) > -1 ? 'icongreen' : 'iconblue']">
+                  <p class="pt-1" style="color: white;"><strong>{{i+1}}</strong></p>
+                </div>
+            </div>
+            </div>
+          </div>
+          <hr>
+          <div class="text-center pb-3">
+            <h1 class="custonh1"> <button class="btn btn-primary" (click)="submitexam('...');">Submit</button></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+

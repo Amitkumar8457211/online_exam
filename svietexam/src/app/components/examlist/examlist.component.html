@@ -1,0 +1,44 @@
+<div class="container-fluid bg-info">
+  <div class="container">
+    <div class="row pt-1">
+      <h2>Welcome :) {{username}}</h2>
+      <h1 class="ml-auto"><button class="btn btn-primary" (click)="logout()">Logout</button></h1>
+    </div>
+  </div>
+
+</div>
+<h2 class="text-center">😏Best of Luck😏</h2>
+
+<h1 class="text-danger mx-auto">{{error}}</h1>
+ 
+<div class="container">
+  <h2 class="mx-auto"><u>Instruction</u></h2>
+  <li><b>You can't minimize the tab while exam is going.</b></li>
+  <li><b>Do not press back button or reload button.</b></li>
+  <li><b>Put your screen in full view mode.</b></li>
+  <li><b>Close all the tabs running behind.</b></li>
+  <p class="text-warning">Warning:- Your exam will be submitted after 5 sec if you will not follow these rules.</p>
+</div>  
+<hr>
+<div *ngIf="exam; else noexamfound">
+  <div *ngFor="let Examlists of Examlist">
+
+    <div class="container examcontainer">
+        <div class="row">
+          <div class="col-md-9">
+            <h1 class="ml-3 custonh1"> {{Examlists.examName}}</h1>
+          </div>
+          <div class="col-md-3 text-center">
+            <h1 class="custonh1"> <button class="btn btn-primary" (click)="startexam(Examlists.subjectCode,Examlists.time,Examlists.id)">Start exam</button></h1>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noexamfound>
+  <div class="container container-not-found text-center mt-5 mb-5 ">
+    <h1 style="font-size: 100px; margin: 50px;">😯</h1>
+    <h2>No Exam available for you</h2>
+  </div>
+</ng-template>

@@ -1,0 +1,7 @@
+.bottomfixed{
+  min-height:92.5vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
