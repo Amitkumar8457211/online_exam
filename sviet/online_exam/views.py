@@ -122,6 +122,7 @@ class SubmitExam(APIView):
 
         getmark = int(row[0])
         percentage = int((getmark * 100) / totalmark)
+        reason = request.data.get("reason")
 
         data = {
             "username": username,
@@ -130,7 +131,8 @@ class SubmitExam(APIView):
             "getmark": getmark,
             "totalquestion": totalquestion,
             "questionattempt": questionattempt,
-            "percentage": percentage
+            "percentage": percentage,
+            "reason": reason
         }
 
         serializer = ResultSerializer(data=data)

@@ -52,6 +52,7 @@ class ResultTable(models.Model):
     totalquestion = models.IntegerField(blank=False)
     questionattempt = models.IntegerField(blank=False)
     percentage = models.IntegerField(blank=False)
+    reason = models.TextField(max_length=100, blank=False, default=None)
     currenttime = models.DateTimeField(auto_now_add=True, blank=False)
 
     def __str__(self):

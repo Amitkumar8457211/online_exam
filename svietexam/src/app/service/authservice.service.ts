@@ -126,17 +126,19 @@ export class AuthserviceService {
     );
   }
 
-  submitexam(username:string,examid:number):Observable<any>{
+  submitexam(username:string,examid:number,reason:string):Observable<any>{
     return this.http.post<any>(this.url+"online_exam/api/submitexam/",
     {
       "username":username,
       "examid":examid,
+      "reason":reason,
     },
     this.httpOptions
     ).pipe(
       catchError(this.handleError)
     );
   }
+
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

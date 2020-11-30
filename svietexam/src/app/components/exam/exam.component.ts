@@ -208,7 +208,7 @@ export class ExamComponent implements OnInit {
 
   submitexam(msg) {
     console.log("Amit"+msg);
-    this.AuthserviceService.submitexam(this.username, this.id)
+    this.AuthserviceService.submitexam(this.username, this.id, this.msg)
     .subscribe(
       data => {
         if (data) {

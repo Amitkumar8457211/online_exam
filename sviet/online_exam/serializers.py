@@ -32,5 +32,5 @@ class ResultSerializer(serializers.ModelSerializer):
     class Meta:
         model = ResultTable
         #fields = '__all__'
-        fields = ( 'username', 'examid', 'totalmark', 'getmark', 'totalquestion', 'questionattempt', 'percentage')
+        fields = ( 'username', 'examid', 'totalmark', 'getmark', 'totalquestion', 'questionattempt', 'percentage', 'reason')
 
